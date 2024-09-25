@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>休闲网注册页面</title>
+		<link href="css/leisure.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="header" class="main">
+			<div id="headerLeft">
+				<img src="images/logo.gif" />
+			</div>
+			<div id="headerRight">注册 | 登录 | 帮助</div>
+		</div>
+		<div class="register">
+			<form  method="get"  id="myform" action="../休闲网登录/login.html">
+				<h1 class="bold">注册休闲网</h1>
+				<dl>
+					<dt>您的Email：</dt>
+					<dd><input id="email" type="text" class="inputs" /><span id="DivEmail"></span></dd>
+				</dl>
+				<dl>
+					<dt>输入密码：</dt>
+					<dd><input id="pwd" type="password" class="inputs" /><span id="DivPwd"></span></dd>
+				</dl>
+				<dl>
+					<dt>再输入一遍密码：</dt>
+					<dd><input id="repwd" type="password" class="inputs" /><span id="DivRepwd"></span></dd>
+				</dl>
+				<dl>
+					<dt>您的姓名：</dt>
+					<dd><input id="user" type="text" class="inputs" /><span id="DivUser"></span></dd>
+				</dl>
+				<dl>
+					<dt>&nbsp;</dt>
+					<dd><input name="btn" type="submit" value="注册" class="rb1" /></dd>
+				</dl>
+			</form>
+		</div>
+		<div id="footer" class="main"><a href="#">关于我们</a> | <a href="#">诚聘英才</a> |<a href="#"> 联系方式</a> | <a
+				href="#">帮助中心</a></div>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script>
+			//使用String对象的length属性验证密码的长度
+						//验证两次输入密码是否一致
+						//使用length属性获取文本长度，然后使用for循环和substring( )方法依次截断单个字符，最后判断每个字符是否是数字
+			
+			$(document).ready(function() {
+				//绑定失去焦点事件
+				$("#email").blur(checkEmail);
+				$("#pwd").blur(checkped);
+				$("#repwd").blur(checkrepwd);
+				$("#user").blur(checkuser);
+						
+			})
+			//验证Email
+			function checkEmail() {
+				var $mail = $("#email");
+				var $divID = $("#DivEmail");
+				$divID.html("");
+				if ($mail.val() == "") {
+					$divID.html("Email不能为空");
+					return false;
+				}
+				if ($mail.val().indexOf("@") == -1) {
+					$divID.html("Email格式不正确，必须包含@");
+					return false;
+				}
+				if ($mail.val().indexOf(".") == -1) {
+					$divID.html("Email格式不正确，必须包含.");
+					return false;
+				}
+				return true;
+			}
+	//使用String对象的length属性验证密码的长度
+	
+	//验证两次输入密码是否一致
+	
+	//使用length属性获取文本长度，然后使用for循环和substring( )方法依次截断单个字符，最后判断每个字符是否是数字
+			function checkped(){
+				var $pwd = $("#pwd").val();
+				var $divpwd = $("#DivPwd");
+				
+				if($pwd.length<=6){
+					$divpwd.html("密码不能小于6位");
+					return false;
+				}
+				$divpwd.html("合格！");
+				return true;
+			}
+			function  checkrepwd(){
+				var repwd = $("#repwd").val();
+				var divrepwd = $("#DivRepwd");
+				var pwd = $("#pwd").val();
+				
+				if(repwd!=pwd){
+					divrepwd.html("两次密码不一致")
+					return flase;
+				}
+				divrepwd.html("合格！");
+				return true;
+			}
+			function  checkuser(){
+				var user = $("#user").val();
+				$("#DivUser").html("");
+				
+				var qq=user.substring();
+				for (var i = 0; i < user.length; i++) {
+				
+					if(qq[i]<=10){
+						$("#DivUser").html("里边不能包含数字")
+						return flase; 
+					}
+				}
+				return true;
+				}
+			
+		</script>
+
+	</body>
+</html>
